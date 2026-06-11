@@ -9,7 +9,8 @@ import { Input, Textarea } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Send, CheckCircle, AlertCircle, Github, Linkedin, Mail } from "lucide-react";
+import { Send, CheckCircle, AlertCircle, Mail } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const SERVICE_ID           = "service_dfuheb5";
 const TEMPLATE_ID          = "template_fz8syc3";
@@ -17,8 +18,8 @@ const AUTO_REPLY_TEMPLATE_ID = "template_ivdkwoj";
 const PUBLIC_KEY           = "E6JO-uj8R8fbgMQ0y";
 
 const socialLinks = [
-  { icon: Github,   label: "GitHub",   href: "#" },
-  { icon: Linkedin, label: "LinkedIn", href: "#" },
+  { icon: FaGithub,   label: "GitHub",   href: "#" },
+  { icon: FaLinkedin, label: "LinkedIn", href: "#" },
   { icon: Mail,     label: "Email",    href: "mailto:chinkatesuraj@gmail.com" },
 ];
 

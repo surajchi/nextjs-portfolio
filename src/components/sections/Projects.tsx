@@ -7,7 +7,8 @@ import { projects } from "@/data/projects";
 import SectionWrapper from "@/components/SectionWrapper";
 import ProjectModal from "@/components/ProjectModal";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
+import { ExternalLink, ArrowUpRight } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import { type Project } from "@/data/projects";
 
 export default function Projects() {
@@ -113,7 +114,7 @@ export default function Projects() {
                       className="flex items-center gap-1.5 text-xs font-medium transition-colors hover:text-[var(--accent-color)]"
                       style={{ color: "var(--text-muted)" }}
                     >
-                      <Github size={12} /> GitHub
+                      <FaGithub size={12} /> GitHub
                     </a>
                     <span className="ml-auto text-xs font-medium" style={{ color: "var(--accent-color)" }}>
                       View details →

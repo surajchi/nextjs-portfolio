@@ -55,7 +55,7 @@ export default function Resume() {
                   size="pill"
                   className="gap-2.5 text-sm font-semibold"
                 >
-                  <a href="/resume.pdf" download>
+                  <a href="/SURAJ_CV.pdf" download>
                     <Download size={15} />
                     Download CV
                   </a>
