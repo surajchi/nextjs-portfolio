@@ -1,0 +1,81 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { blogPosts } from "@/data/blog";
+import SectionWrapper from "@/components/SectionWrapper";
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+
+export default function BlogPreview() {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  return (
+    <SectionWrapper title="Latest Articles" id="blog-preview">
+      <div ref={ref} className="grid md:grid-cols-2 gap-6 mb-10">
+        {blogPosts.slice(0, 2).map((post, i) => (
+          <motion.div
+            key={post.id}
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: i * 0.1, ease: [0.23, 1, 0.32, 1] }}
+          >
+            <motion.div
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+              className="h-full"
+            >
+              <Card className="p-7 h-full cursor-pointer group">
+                <CardContent className="p-0 flex flex-col h-full">
+                  <div className="mb-4">
+                    <Badge variant="gold">Article</Badge>
+                  </div>
+
+                  <h3
+                    className="font-display text-lg font-bold mb-3 leading-snug group-hover:transition-colors"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    {post.title}
+                  </h3>
+
+                  <p className="text-sm leading-relaxed mb-6 flex-1" style={{ color: "var(--text-muted)" }}>
+                    {post.summary}
+                  </p>
+
+                  <Link
+                    href="/blog"
+                    className="inline-flex items-center gap-2 text-sm font-semibold transition-all group-hover:gap-3"
+                    style={{ color: "var(--accent-color)" }}
+                  >
+                    Read Article
+                    <ArrowRight size={14} />
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="text-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} className="inline-block">
+            <Button asChild variant="gold-outline" size="pill" className="gap-2">
+              <Link href="/blog">
+                View All Articles
+                <ArrowRight size={14} />
+              </Link>
+            </Button>
+          </motion.div>
+        </motion.div>
+      </div>
+    </SectionWrapper>
+  );
+}

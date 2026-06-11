@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+@import "tailwindcss";
+
+/* class-based dark mode (driven by next-themes) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================
+   DESIGN TOKENS — GRAPHITE & EMERALD
+   ============================================ */
+:root {
+  /* ---- base (light) ---- */
+  --background: oklch(0.985 0.003 165);
+  --foreground: oklch(0.22 0.012 165);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.012 165);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.012 165);
+
+  /* emerald is the brand / primary */
+  --primary: oklch(0.55 0.092 165);
+  --primary-foreground: oklch(0.99 0.004 165);
+
+  --secondary: oklch(0.962 0.004 165);
+  --secondary-foreground: oklch(0.25 0.012 165);
+
+  --muted: oklch(0.962 0.004 165);
+  --muted-foreground: oklch(0.5 0.012 165);
+
+  --accent: oklch(0.95 0.012 168);
+  --accent-foreground: oklch(0.3 0.03 168);
+
+  --destructive: oklch(0.58 0.2 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --border: oklch(0.9 0.006 165);
+  --input: oklch(0.9 0.006 165);
+  --ring: oklch(0.55 0.092 165);
+
+  --radius: 0.75rem;
+
+  /* ---- semantic tokens ---- */
+  --bg-primary: var(--background);
+  --bg-secondary: var(--secondary);
+
+  --bg-card: var(--card);
+  --bg-card-hover: color-mix(in oklab, var(--card) 92%, var(--foreground));
+
+  --border-color: var(--border);
+  --border-strong: color-mix(in oklab, var(--border) 65%, var(--foreground));
+
+  --text-primary: var(--foreground);
+  --text-secondary: var(--muted-foreground);
+  --text-muted: color-mix(in oklab, var(--muted-foreground) 75%, transparent);
+
+  /* emerald accent + tints (these replace every glow) */
+  --accent-color: var(--primary);
+  --accent-2: oklch(0.5 0.075 188);
+  --accent-soft: color-mix(in oklab, var(--accent-color) 11%, transparent);
+  --accent-soft-strong: color-mix(in oklab, var(--accent-color) 16%, transparent);
+  --accent-border: color-mix(in oklab, var(--accent-color) 30%, transparent);
+  --accent-ring: color-mix(in oklab, var(--accent-color) 22%, transparent);
+
+  --nav-bg: color-mix(in oklab, var(--background) 78%, transparent);
+
+  --shadow-sm: 0 1px 2px color-mix(in oklab, var(--foreground) 6%, transparent);
+  --shadow: 0 4px 20px color-mix(in oklab, var(--foreground) 7%, transparent);
+  --shadow-lg: 0 16px 40px color-mix(in oklab, var(--foreground) 10%, transparent);
+
+  --grain-opacity: 0.022;
+}
+
+.dark {
+  --background: oklch(0.165 0.006 165);
+  --foreground: oklch(0.95 0.004 165);
+
+  --card: oklch(0.205 0.008 165);
+  --card-foreground: oklch(0.95 0.004 165);
+
+  --popover: oklch(0.205 0.008 165);
+  --popover-foreground: oklch(0.95 0.004 165);
+
+  --primary: oklch(0.74 0.1 168);
+  --primary-foreground: oklch(0.18 0.02 168);
+
+  --secondary: oklch(0.255 0.008 165);
+  --secondary-foreground: oklch(0.95 0.004 165);
+
+  --muted: oklch(0.255 0.008 165);
+  --muted-foreground: oklch(0.7 0.01 165);
+
+  --accent: oklch(0.3 0.025 168);
+  --accent-foreground: oklch(0.95 0.01 168);
+
+  --destructive: oklch(0.62 0.18 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.74 0.1 168);
+
+  --bg-card: color-mix(in oklab, var(--card) 82%, transparent);
+  --bg-card-hover: color-mix(in oklab, var(--card) 96%, transparent);
+
+  --border-strong: color-mix(in oklab, white 22%, transparent);
+
+  --accent-2: oklch(0.66 0.08 188);
+
+  --nav-bg: color-mix(in oklab, var(--background) 80%, transparent);
+
+  --shadow-sm: 0 1px 2px color-mix(in oklab, black 40%, transparent);
+  --shadow: 0 4px 20px color-mix(in oklab, black 45%, transparent);
+  --shadow-lg: 0 16px 40px color-mix(in oklab, black 55%, transparent);
+
+  --grain-opacity: 0.028;
+}
+
+/* ============================================
+   THEME MAPPING — expose tokens as utilities
+   ============================================ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-mono: 'Space Mono', monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --container-8xl: 90rem;
+}
+
+/* ============================================
+   BASE RESET
+   ============================================ */
+@layer base {
+  * { border-color: var(--border-color); }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.4s ease, color 0.4s ease;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--accent-soft-strong);
+    color: var(--accent-color);
+  }
+
+  ::-webkit-scrollbar { width: 9px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 9px;
+    border: 2px solid var(--bg-primary);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent-color); }
+}
+
+/* ============================================
+   GRAIN TEXTURE (subtle — not a glow)
+   ============================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: var(--grain-opacity);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ============================================
+   COMPONENT LAYER
+   ============================================ */
+@layer components {
+  /* Card surface — clean border + soft shadow, no glow */
+  .glass-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-sm);
+    transition: background 0.25s ease, box-shadow 0.25s ease,
+      border-color 0.25s ease, transform 0.25s ease;
+    isolation: isolate;
+  }
+  .glass-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent-border);
+    box-shadow: var(--shadow);
+  }
+
+  /* Skill / tag badge */
+  .skill-badge {
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    background: var(--accent-soft);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-border);
+    text-transform: uppercase;
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* Primary button — solid emerald, subtle depth, no glow */
+  .btn-primary {
+    background: var(--accent-color);
+    color: var(--primary-foreground);
+    border: 1px solid transparent;
+    box-shadow: var(--shadow-sm);
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  }
+  .btn-primary:hover {
+    background: color-mix(in oklab, var(--accent-color) 88%, var(--foreground));
+    box-shadow: var(--shadow);
+    transform: translateY(-1px);
+  }
+
+  /* Outline button */
+  .btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-strong);
+    transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+  }
+  .btn-outline:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    background: var(--accent-soft);
+  }
+
+  /* Form inputs */
+  .form-input {
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .form-input::placeholder { color: var(--text-muted); }
+  .form-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--accent-ring);
+  }
+
+  /* Timeline dot — clean ring, no glow */
+  .timeline-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--bg-primary), 0 0 0 5px var(--border-strong);
+    transition: box-shadow 0.25s ease;
+  }
+  .timeline-dot:hover {
+    box-shadow: 0 0 0 4px var(--bg-primary), 0 0 0 5px var(--accent-color);
+  }
+
+  /* Nav link */
+  .nav-link {
+    position: relative;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+    font-family: 'Space Mono', monospace;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent-color);
+    transition: width 0.25s ease;
+  }
+  .nav-link:hover { color: var(--text-primary); }
+  .nav-link:hover::after { width: 100%; }
+
+  /* Gradient text — emerald → teal */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ============================================
+   TYPOGRAPHY UTILITIES
+   ============================================ */
+.font-display {
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: -0.02em;
+}
+.font-mono-custom {
+  font-family: 'Space Mono', monospace;
+}
+
+/* hide content until anime.js reveals it (no flash) */
+.reveal-hidden { opacity: 0; }
