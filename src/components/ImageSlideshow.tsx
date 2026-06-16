@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface ImageSlideshowProps {
@@ -60,12 +61,14 @@ export default function ImageSlideshow({
   return (
     <>
       {images.map((src, i) => (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
+        <Image
           key={`${src}-${i}`}
           src={src}
           alt={alt}
-          className={`absolute inset-0 w-full h-full object-cover transition-[opacity,transform] duration-700 ${
+          fill
+          sizes="(max-width: 768px) 100vw, 420px"
+          priority={i === 0}
+          className={`object-cover transition-[opacity,transform] duration-700 ${
             i === index ? "opacity-100" : "opacity-0"
           } ${imgClassName}`}
         />

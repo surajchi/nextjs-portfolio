@@ -76,8 +76,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   >
                     <a
                       href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      target={project.github && project.github !== "#" ? "_blank" : undefined}
+                      rel={project.github && project.github !== "#" ? "noopener noreferrer" : undefined}
                     >
                       <FaGithub size={14} />
                       GitHub
@@ -90,8 +90,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   >
                     <a
                       href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      target={project.demo && project.demo !== "#" ? "_blank" : undefined}
+                      rel={project.demo && project.demo !== "#" ? "noopener noreferrer" : undefined}
                     >
                       <ExternalLink size={14} />
                       Live Demo

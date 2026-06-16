@@ -84,6 +84,18 @@ export default function Hero() {
     if (!ctx) return;
     const q = (sel: string) => ctx.querySelectorAll(sel);
 
+    // Respect reduced-motion: skip the reveal animation but still show content
+    // (elements start at opacity:0 via .reveal-hidden), so make them visible.
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReduced) {
+      q(".reveal-hidden").forEach((el) => {
+        (el as HTMLElement).style.opacity = "1";
+      });
+      return;
+    }
+
     animate(q(".hero-badge"), {
       opacity: [0, 1],
       translateY: [16, 0],
@@ -268,7 +280,7 @@ export default function Hero() {
         {/* CTAs */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
-            href="/resume.pdf"
+            href="/SURAJ_CV.pdf"
             download
             className="hero-cta reveal-hidden btn-primary inline-flex items-center gap-3 px-8 py-3.5 rounded-full font-semibold text-sm"
           >

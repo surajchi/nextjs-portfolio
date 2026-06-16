@@ -1,5 +1,7 @@
 export interface BlogPost {
   id: number;
+  slug: string;
+  date: string;
   title: string;
   summary: string;
   content: string;
@@ -8,6 +10,8 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: 1,
+    slug: "from-fresher-to-react-developer",
+    date: "2026-02-11",
     title: "From Fresher to React Developer",
     summary: "My journey of getting placed as a React Developer.",
     content: `
@@ -32,6 +36,8 @@ Now I work on enterprise dashboards and scalable UI systems.
   },
   {
     id: 2,
+    slug: "why-i-added-typescript-to-my-stack",
+    date: "2026-05-20",
     title: "Why I Added TypeScript to My Stack",
     summary:
       "How moving from JavaScript to TypeScript made my React apps safer, faster to refactor, and far easier to maintain.",
@@ -84,6 +90,8 @@ app that is going to grow, I now reach for TypeScript from day one.
   },
   {
     id: 3,
+    slug: "building-a-food-redistribution-platform",
+    date: "2026-04-08",
     title: "Building a Full-Stack Food Redistribution Platform",
     summary:
       "Lessons from building a platform that connects food donors with receivers using React, Django, and JWT authentication.",
@@ -134,6 +142,8 @@ and a project that taught me how to think about an entire system, not just the U
   },
   {
     id: 4,
+    slug: "designing-a-trading-journal-react-django",
+    date: "2026-03-15",
     title: "Designing a Trading Journal With React & Django REST",
     summary:
       "How I built a tool that syncs trades automatically and turns raw numbers into analytics traders can actually use.",

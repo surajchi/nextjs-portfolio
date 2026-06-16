@@ -46,7 +46,7 @@ export default function BlogPreview() {
                   </p>
 
                   <Link
-                    href="/blog"
+                    href={`/blog/${post.slug}`}
                     className="inline-flex items-center gap-2 text-sm font-semibold transition-all group-hover:gap-3"
                     style={{ color: "var(--accent-color)" }}
                   >

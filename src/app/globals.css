@@ -338,3 +338,19 @@ body::before {
 
 /* hide content until anime.js reveals it (no flash) */
 .reveal-hidden { opacity: 0; }
+
+/* Respect users who prefer reduced motion: neutralize CSS animations/transitions.
+   JS-driven motion is handled separately (framer-motion MotionConfig, anime.js
+   guard in Hero, and the Three.js backdrop). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Ensure anime.js targets are never left hidden if its JS hasn't run. */
+  .reveal-hidden { opacity: 1 !important; }
+}

@@ -105,6 +105,8 @@ export default function Projects() {
                   >
                     <a
                       href={p.demo}
+                      target={p.demo && p.demo !== "#" ? "_blank" : undefined}
+                      rel={p.demo && p.demo !== "#" ? "noopener noreferrer" : undefined}
                       onClick={(e) => e.stopPropagation()}
                       className="flex items-center gap-1.5 text-xs font-medium transition-colors hover:text-[var(--accent-color)]"
                       style={{ color: "var(--text-muted)" }}
@@ -113,6 +115,8 @@ export default function Projects() {
                     </a>
                     <a
                       href={p.github}
+                      target={p.github && p.github !== "#" ? "_blank" : undefined}
+                      rel={p.github && p.github !== "#" ? "noopener noreferrer" : undefined}
                       onClick={(e) => e.stopPropagation()}
                       className="flex items-center gap-1.5 text-xs font-medium transition-colors hover:text-[var(--accent-color)]"
                       style={{ color: "var(--text-muted)" }}
