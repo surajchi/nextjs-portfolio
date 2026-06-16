@@ -18,8 +18,8 @@ const AUTO_REPLY_TEMPLATE_ID = "template_ivdkwoj";
 const PUBLIC_KEY           = "E6JO-uj8R8fbgMQ0y";
 
 const socialLinks = [
-  { icon: FaGithub,   label: "GitHub",   href: "#" },
-  { icon: FaLinkedin, label: "LinkedIn", href: "#" },
+  { icon: FaGithub,   label: "GitHub",   href: "taegrtnlankhttps://github.com/surajchi" },
+  { icon: FaLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/surajchinkate" },
   { icon: Mail,     label: "Email",    href: "mailto:chinkatesuraj@gmail.com" },
 ];
 

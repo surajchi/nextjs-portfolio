@@ -6,6 +6,7 @@ import { useInView } from "react-intersection-observer";
 import { projects } from "@/data/projects";
 import SectionWrapper from "@/components/SectionWrapper";
 import ProjectModal from "@/components/ProjectModal";
+import ImageSlideshow from "@/components/ImageSlideshow";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, ArrowUpRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
@@ -43,10 +44,12 @@ export default function Projects() {
               >
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={p.image}
+                  <ImageSlideshow
+                    images={p.images}
                     alt={p.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    imgClassName="group-hover:scale-110"
+                    autoPlay
+                    showDots
                   />
                   {/* Overlay */}
                   <div

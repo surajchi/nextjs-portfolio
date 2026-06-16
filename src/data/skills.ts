@@ -14,6 +14,7 @@ export const skills: SkillGroup[] = [
     items: [
       { name: "HTML", icon: "/assets/html.svg" },
       { name: "JavaScript", icon: "/assets/js.svg" },
+      { name: "TypeScript", icon: "/assets/typescript.svg" },
       { name: "React", icon: "/assets/react.svg" },
       { name: "Tailwind", icon: "/assets/tailwind.svg" },
     ],

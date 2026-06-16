@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 import { ExternalLink } from "lucide-react";
-import Image from "next/image";
+import ImageSlideshow from "@/components/ImageSlideshow";
 import {
   Dialog,
   DialogContent,
@@ -34,23 +34,16 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             >
               {/* Image */}
               <div className="relative h-56 overflow-hidden">
-                <Image
-                  src={project.image}
+                <ImageSlideshow
+                  images={project.images}
                   alt={project.title}
-                  fill
-                  className="object-cover"
-                  unoptimized
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(to top, var(--bg-secondary) 0%, transparent 55%)",
-                  }}
+                  autoPlay
+                  showArrows
+                  showDots
                 />
                 {/* Gold accent bar */}
                 <div
-                  className="absolute bottom-0 left-0 right-0 h-0.5"
+                  className="absolute bottom-0 left-0 right-0 h-0.5 pointer-events-none"
                   style={{
                     background:
                       "linear-gradient(90deg, var(--accent-color), var(--accent-2))",
