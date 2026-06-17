@@ -103,16 +103,18 @@ export default function Projects() {
                     className="flex items-center gap-3 pt-4"
                     style={{ borderTop: "1px solid var(--border-color)" }}
                   >
-                    <a
-                      href={p.demo}
-                      target={p.demo && p.demo !== "#" ? "_blank" : undefined}
-                      rel={p.demo && p.demo !== "#" ? "noopener noreferrer" : undefined}
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex items-center gap-1.5 text-xs font-medium transition-colors hover:text-[var(--accent-color)]"
-                      style={{ color: "var(--text-muted)" }}
-                    >
-                      <ExternalLink size={12} /> Demo
-                    </a>
+                    {p.demo && p.demo !== "#" && (
+                      <a
+                        href={p.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex items-center gap-1.5 text-xs font-medium transition-colors hover:text-[var(--accent-color)]"
+                        style={{ color: "var(--text-muted)" }}
+                      >
+                        <ExternalLink size={12} /> Demo
+                      </a>
+                    )}
                     <a
                       href={p.github}
                       target={p.github && p.github !== "#" ? "_blank" : undefined}

@@ -83,20 +83,22 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                       GitHub
                     </a>
                   </Button>
-                  <Button
-                    asChild
-                    variant="gold"
-                    className="gap-2 rounded-xl"
-                  >
-                    <a
-                      href={project.demo}
-                      target={project.demo && project.demo !== "#" ? "_blank" : undefined}
-                      rel={project.demo && project.demo !== "#" ? "noopener noreferrer" : undefined}
+                  {project.demo && project.demo !== "#" && (
+                    <Button
+                      asChild
+                      variant="gold"
+                      className="gap-2 rounded-xl"
                     >
-                      <ExternalLink size={14} />
-                      Live Demo
-                    </a>
-                  </Button>
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ExternalLink size={14} />
+                        Live Demo
+                      </a>
+                    </Button>
+                  )}
                 </div>
               </div>
             </motion.div>
